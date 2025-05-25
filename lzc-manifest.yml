@@ -19,6 +19,14 @@ services:
     image: registry.lazycat.cloud/mxuexxmy/shynewt/kostos:2211286fe07b6634
     environment:
       - NODE_ENV=production
-    command: sh -c "npm run db:migrate && npm start"
     binds:
-      - /lzcapp/var/kostos.db:/app/kostos.db
+      - /lzcapp/var/database:/app/database
+    setup_script: |
+        if [ ! -f /app/database/kostos.db ];then
+            echo "/app/database/kostos.db not exists"
+            cp -f /lzcapp/pkg/content/database/kostos.db /app/database/kostos.db
+        fi
+        echo "create db link"
+        ln -s /app/database/kostos.db /app/kostos.db
+        npm run db:migrate
+        npm start
