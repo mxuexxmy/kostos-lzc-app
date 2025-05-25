@@ -1,0 +1,11 @@
+services:
+  kostos:
+    image: ghcr.io/shynewt/kostos:latest
+    container_name: Kostos
+    ports:
+      - 3325:3000
+    volumes:
+      - /volume1/docker/kostos/kostos.db:/app/kostos.db
+    command: sh -c "npm run db:migrate && npm start"
+    environment:
+      NODE_ENV: production

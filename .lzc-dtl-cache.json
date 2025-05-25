@@ -1,0 +1,30 @@
+{
+  "name": "Kostos",
+  "package": "xyz.mxue.kostos",
+  "description": "Kostos 是一款极简主义的预算应用程序，旨在实现简单性和易用性。它允许用户通过干净、直观的界面跟踪费用、设置预算和可视化支出模式。",
+  "homepage": "https://github.com/shynewt/kostos",
+  "author": "shynewt",
+  "app_features": [],
+  "subdomain": "kostos",
+  "version": "0.0.1",
+  "iconPath": "icon.png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [],
+  "lastRouteType": "from_compose",
+  "port_mappings": {
+    "kostos_3325_3000": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/"
+    }
+  },
+  "image_ghcr.io_shynewt_kostos_latest": {
+    "originalImage": "ghcr.io/shynewt/kostos:latest",
+    "pushTarget": "lazycat",
+    "newImageName": "registry.lazycat.cloud/mxuexxmy/shynewt/kostos:2211286fe07b6634",
+    "timestamp": "2025-05-24T17:47:31.856Z"
+  },
+  "kostos_volume_/app/kostos.db_action": "emptyDir",
+  "kostos_volume_/app/kostos.db_location": "app_data"
+}

@@ -1,0 +1,24 @@
+lzc-sdk-version: "0.1"
+name: Kostos
+package: xyz.mxue.kostos
+version: 0.0.1
+description: Kostos 是一款极简主义的预算应用程序，旨在实现简单性和易用性。它允许用户通过干净、直观的界面跟踪费用、设置预算和可视化支出模式。
+homepage: https://github.com/shynewt/kostos
+author: shynewt
+application:
+  subdomain: kostos
+  background_task: false
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  routes:
+    - /=http://kostos.xyz.mxue.kostos.lzcapp:3000/
+services:
+  kostos:
+    image: registry.lazycat.cloud/mxuexxmy/shynewt/kostos:2211286fe07b6634
+    environment:
+      - NODE_ENV=production
+    command: sh -c "npm run db:migrate && npm start"
+    binds:
+      - /lzcapp/var/kostos.db:/app/kostos.db
